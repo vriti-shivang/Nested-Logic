@@ -1,17 +1,11 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-return_day, return_month, return_year = [int(e) for e in input().strip().split(' ')]
-due_day, due_month, due_year = [int(e) for e in input().strip().split(' ')]
-if return_year < due_year:
+rd, rm, ry = [int(x) for x in input().split(' ')]
+ed, em, ey = [int(x) for x in input().split(' ')]
+
+if (ry, rm, rd) <= (ey, em, ed):
     print(0)
-elif return_year == due_year:
-    if return_month < due_month:
-        print(0)
-    elif return_month == due_month:
-        if return_day <= due_day:
-            print(0)
-        else:
-            print(15 * (return_day - due_day))
-    else:
-        print(500 * (return_month - due_month))
+elif (ry, rm) == (ey, em):
+    print(15 * (rd - ed))
+elif ry == ey:
+    print(500 * (rm - em))
 else:
     print(10000)
